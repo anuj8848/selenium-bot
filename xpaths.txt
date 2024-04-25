@@ -1,0 +1,34 @@
+Xpath: XML Path Language
+Represents nodes in an XML of HTML document as a directory path with
+with forward slashes / as the main delimiter.
+
+----expressions & queries-------------
+
+Absolute and Relative XPaths
+XPath function calls
+
+
+Absolute path begin with /html, the root
+Relative Xpath begins with //*
+    you may replace * with a suitable HTML tag, and the Xpath will
+    still works
+
+getting a node with a particular ID 
+    //*[@id="name-of-id"]
+
+[] : distinguishes betwn different nodes sharing the same HTML
+    tag by their indices, such as <div>
+    eg. div[3]
+
+
+-----Xpath axis------------------------
+
+@ in XPath has to do with Xpath axes.
+Xpath axis describes a relationship to the current node on the 
+HTML hierarchy tree.
+:: specifies conditions on the axis.
+
+A step in an XPath segment betwn consecutive forward slashes /,
+such as html in absolute paths.
+An axis can be a step.
+
