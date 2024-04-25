@@ -5,10 +5,15 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from time import sleep
 
-def word_counter(word_list):
+website=input("enter website to automate\n")
+word2count=input('enter required word to count: ')
+
+
+
+def word_counter(word,word_list):
     count=0
-    for word in word_list:
-        if word=='data' or word=='Data' or word=='datas' or word=='Datas':
+    for wrd in word_list:
+        if wrd==word or wrd==word or wrd==word or wrd==word:
             count+=1
     return count
 
@@ -16,12 +21,12 @@ def word_counter(word_list):
 driver=webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 driver.maximize_window()
 
-driver.get("https://www.datacamp.com/tutorial/pandas")
+driver.get(website)
 
-link=driver.find_element(By.XPATH,'//*[@id="main-container"]/div[3]/aside[1]/div/div/nav/div/ul[1]/li/a').click()
-content_page=driver.find_element(By.XPATH,'//*[@id="main-container"]/div[3]').text
-word_list=content_page.split(" ")
+link=driver.find_element(By.XPATH,'/html/body/div[4]').text
+# content_page=driver.find_elements(By.XPATH,'//*[@id="main-container"]/div[3]').text
+word_list=link.split(" ")
 
 
-print(word_counter(word_list))
+print(word_counter(word2count,word_list))
 driver.quit()
