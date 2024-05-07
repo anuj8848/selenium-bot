@@ -18,6 +18,14 @@ from selenium.webdriver.support import expected_conditions as EC
 def initialize_driver():
     return webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 
+def xpath_sendkeys(driver,xpath,keys):
+    if keys =='click':
+        driver.find_element(By.XPATH,xpath).click()    
+    else:
+        WebDriverWait(driver,5).until(EC.presence_of_element_located((By.XPATH,xpath))).send_keys(keys)
+        sleep(2)
+    
+
 def login(driver, email, password):
     driver.get("https://websiteexample.com/")  # your website
     
@@ -65,15 +73,12 @@ def add_user(driver):
     add_user=driver.find_element(By.XPATH,'replace by required xpath')
     add_user.click()
     
-    WebDriverWait(driver,5).until(EC.presence_of_element_located((By.XPATH,'replace by required xpath'))).send_keys("john")
-    sleep(2)
-    WebDriverWait(driver,1).until(EC.presence_of_element_located((By.XPATH,'replace by required xpath'))).send_keys("doe")
-    sleep(2)
-    WebDriverWait(driver,1).until(EC.presence_of_element_located((By.XPATH,'replace by required xpath'))).send_keys("johndoe.nepal@email.com")
-    sleep(2)
-    driver.find_element(By.XPATH,'replace by required xpath').click()
-    WebDriverWait(driver,1).until(EC.presence_of_element_located((By.XPATH,'replace by required xpath'))).click()
-    driver.find_element(By.XPATH,'replace by required xpath').click()
+    xpath_sendkeys(driver,'xpath','john')
+    xpath_sendkeys(driver,'xpath','johndoeis@email.com')
+    xpath_sendkeys(driver,'xpath','click')
+    xpath_sendkeys(driver,'xpath','click')
+    xpath_sendkeys(driver,'xpath','click')
+    sleep(10)
 
     sleep(10)
 
