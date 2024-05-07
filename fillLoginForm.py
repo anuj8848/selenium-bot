@@ -1,6 +1,9 @@
 '''
 this is a simple program automates the login and and getting content of table task.
 You have to give your email and password once.
+
+new feature added: 5/5/2024
+you can add user too.
 '''
 
 
@@ -52,6 +55,27 @@ def display_name(table_data):
     # row[2] contains project name,there project name is printed
     project_name = [row[2] for row in table_data]
     print(project_name)
+    
+    
+def add_user(driver):
+    usr_mgt=driver.find_element(By.XPATH,'replace by required xpath')
+    usr_mgt.click()
+    users=driver.find_element(By.XPATH,'replace by required xpath')
+    users.click()
+    add_user=driver.find_element(By.XPATH,'replace by required xpath')
+    add_user.click()
+    
+    WebDriverWait(driver,5).until(EC.presence_of_element_located((By.XPATH,'replace by required xpath'))).send_keys("john")
+    sleep(2)
+    WebDriverWait(driver,1).until(EC.presence_of_element_located((By.XPATH,'replace by required xpath'))).send_keys("doe")
+    sleep(2)
+    WebDriverWait(driver,1).until(EC.presence_of_element_located((By.XPATH,'replace by required xpath'))).send_keys("johndoe.nepal@email.com")
+    sleep(2)
+    driver.find_element(By.XPATH,'replace by required xpath').click()
+    WebDriverWait(driver,1).until(EC.presence_of_element_located((By.XPATH,'replace by required xpath'))).click()
+    driver.find_element(By.XPATH,'replace by required xpath').click()
+
+    sleep(10)
 
 def main():
     driver = initialize_driver()
